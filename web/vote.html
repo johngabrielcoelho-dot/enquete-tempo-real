@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Votar</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./">Enquete<span>ao vivo</span></a>
+    </header>
+
+    <main class="card">
+      <p id="loading" class="muted">Carregando enquete…</p>
+
+      <form id="vote-form" hidden>
+        <h1 id="question"></h1>
+        <fieldset class="choices" id="choices">
+          <legend class="sr-only">Escolha uma opção</legend>
+        </fieldset>
+        <p id="error" class="error" role="alert" hidden></p>
+        <button type="submit" class="btn btn-primary btn-block">Votar</button>
+      </form>
+
+      <section id="already" hidden>
+        <h1>Você já votou nesta enquete</h1>
+        <p class="muted">Acompanhe o resultado ao vivo.</p>
+        <a id="already-result" class="btn btn-primary">Ver resultado</a>
+      </section>
+
+      <section id="not-found" hidden>
+        <h1>Enquete não encontrada</h1>
+        <p class="muted">O link pode estar errado ou a enquete foi removida.</p>
+        <a class="btn btn-primary" href="./">Criar uma enquete</a>
+      </section>
+    </main>
+
+    <script type="module" src="/src/pages/vote.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Criar enquete</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./">Enquete<span>ao vivo</span></a>
+    </header>
+
+    <main class="card">
+      <form id="create-form" novalidate>
+        <h1>Criar enquete</h1>
+
+        <label class="field">
+          <span>Pergunta</span>
+          <input id="question" type="text" maxlength="200" placeholder="Ex.: Qual linguagem a turma prefere?" required />
+        </label>
+
+        <fieldset class="field">
+          <legend>Opções</legend>
+          <ol id="options" class="option-list"></ol>
+          <button id="add-option" type="button" class="btn btn-ghost">+ Adicionar opção</button>
+        </fieldset>
+
+        <p id="error" class="error" role="alert" hidden></p>
+        <button type="submit" class="btn btn-primary btn-block">Criar enquete</button>
+      </form>
+
+      <section id="created" hidden>
+        <h1>Enquete criada!</h1>
+        <p class="muted">Compartilhe o link abaixo para a turma votar.</p>
+
+        <div class="share">
+          <input id="vote-link" type="text" readonly aria-label="Link para votar" />
+          <button id="copy-link" type="button" class="btn">Copiar</button>
+        </div>
+
+        <div class="actions">
+          <a id="go-vote" class="btn btn-primary">Abrir votação</a>
+          <a id="go-result" class="btn">Ver resultado ao vivo</a>
+        </div>
+        <button id="new-poll" type="button" class="btn btn-ghost">Criar outra enquete</button>
+      </section>
+    </main>
+
+    <script type="module" src="/src/pages/create.ts"></script>
+  </body>
+</html>

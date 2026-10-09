@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resultado</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./">Enquete<span>ao vivo</span></a>
+    </header>
+
+    <main class="card card-wide">
+      <p id="loading" class="muted">Carregando resultado…</p>
+
+      <section id="result" hidden>
+        <div class="result-head">
+          <h1 id="question"></h1>
+          <span id="status" class="status" data-state="connecting">Conectando…</span>
+        </div>
+        <p id="total" class="muted"></p>
+
+        <div class="chart-box">
+          <canvas id="chart" role="img" aria-label="Gráfico com os votos de cada opção"></canvas>
+        </div>
+
+        <div class="share">
+          <input id="vote-link" type="text" readonly aria-label="Link para votar" />
+          <button id="copy-link" type="button" class="btn">Copiar link de votação</button>
+        </div>
+      </section>
+
+      <section id="not-found" hidden>
+        <h1>Enquete não encontrada</h1>
+        <p class="muted">O link pode estar errado ou a enquete foi removida.</p>
+        <a class="btn btn-primary" href="./">Criar uma enquete</a>
+      </section>
+    </main>
+
+    <script type="module" src="/src/pages/result.ts"></script>
+  </body>
+</html>
