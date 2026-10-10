@@ -35,7 +35,6 @@ function createChart(poll: Poll): Chart<'bar'> {
   Chart.defaults.color = cssVar('--muted');
   Chart.defaults.font.family = cssVar('--font');
 
-  // Altura proporcional ao número de opções, para as barras não ficarem espremidas
   $('.chart-box').style.height = `${Math.max(220, poll.options.length * 64)}px`;
 
   return new Chart($<HTMLCanvasElement>('#chart'), {
@@ -76,14 +75,13 @@ function updateChart(chart: Chart<'bar'>, options: PollOption[]) {
 }
 
 function listenLive(pollId: string, chart: Chart<'bar'>) {
-  // Sem URL = mesma origem; o proxy (Vite/Nginx) leva /socket.io até a API.
+  
   const socket = API_URL ? io(API_URL) : io();
 
   socket.on('connect', async () => {
     try {
       await socket.timeout(5000).emitWithAck('poll:join', { pollId });
-      // Rebusca depois de entrar na sala para não perder votos dados
-      // antes da conexão (ou durante uma queda).
+      
       updateChart(chart, (await getPoll(pollId)).options);
       setStatus('live');
     } catch {

@@ -24,7 +24,11 @@ enquete-tempo-real/
 
 ## Como rodar
 
-Pré-requisito: **Node 20 ou mais novo** (desenvolvido com o Node 24).
+Pré-requisito: **Node 22.12 ou mais novo** (desenvolvido com o Node 24). Não precisa de banco, Docker nem variáveis de ambiente: por enquanto os dados ficam em memória.
+
+> O Vite roda a partir do Node 20.19, mas os testes (Vitest 5) exigem o Node 22.12.
+
+As dependências são instaladas **dentro de `api/` e de `web/`**, e não na raiz. Use dois terminais:
 
 ```bash
 # Terminal 1: API em http://localhost:3000
@@ -39,6 +43,10 @@ npm run dev
 ```
 
 Abra **http://localhost:5173**, crie uma enquete, abra o link de resultado em uma aba e o de votação em outra. Ao votar, o gráfico muda sozinho na outra aba.
+
+As portas **3000** e **5173** precisam estar livres.
+
+> Se o `npm install` em `web/` avisar que o script de instalação do `esbuild` foi bloqueado (`allow-scripts`), pode ignorar. No Vite 8 o esbuild é opcional e o projeto funciona sem ele.
 
 > Em desenvolvimento, o Vite repassa `/api` e `/socket.io` para a API (veja `web/vite.config.ts`). Por isso o front só usa caminhos relativos e não há problema de CORS.
 

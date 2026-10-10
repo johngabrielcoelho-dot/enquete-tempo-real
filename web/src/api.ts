@@ -15,8 +15,6 @@ export interface VotesUpdate {
   options: PollOption[];
 }
 
-// Vazio = mesma origem do front (o Vite em dev, ou o Nginx em produção, repassam para a API).
-// Defina VITE_API_URL no build só se a API ficar em outro domínio.
 export const API_URL: string = import.meta.env.VITE_API_URL ?? '';
 
 export class ApiError extends Error {
@@ -39,7 +37,7 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
     try {
       message = (await res.json()).error ?? message;
     } catch {
-      // resposta sem JSON: mantém a mensagem genérica
+      
     }
     throw new ApiError(res.status, message);
   }

@@ -4,7 +4,6 @@ export function totalVotes(options: PollOption[]): number {
   return options.reduce((sum, o) => sum + o.votes, 0);
 }
 
-/** Porcentagem inteira de cada opção (0 quando ainda não há votos). */
 export function percentages(options: PollOption[]): number[] {
   const total = totalVotes(options);
   return options.map((o) => (total === 0 ? 0 : Math.round((o.votes / total) * 100)));
@@ -41,8 +40,6 @@ export async function copyToClipboard(text: string, button: HTMLButtonElement): 
   setTimeout(() => (button.textContent = original), 1500);
 }
 
-// Marca local de "já votei" — só evita voto duplo por engano no mesmo navegador.
-// O controle de verdade precisa ser feito no servidor (ver HANDOFF.md).
 const votedKey = (pollId: string) => `enquete:votou:${pollId}`;
 
 export function hasVoted(pollId: string): boolean {
@@ -57,6 +54,6 @@ export function markVoted(pollId: string): void {
   try {
     localStorage.setItem(votedKey(pollId), new Date().toISOString());
   } catch {
-    // armazenamento bloqueado: segue sem a marca
+    
   }
 }
