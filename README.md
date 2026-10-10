@@ -178,15 +178,3 @@ socket.on('connect', async () => {
 });
 socket.on('votes:update', ({ options }) => console.log(options));
 ```
-
-## Status do projeto
-
-O projeto é feito em etapas, como num revezamento. Veja o **[HANDOFF.md](HANDOFF.md)** para saber o que já foi feito e o que vem a seguir.
-
-| Etapa | Responsável | Status |
-| ----- | ----------- | ------ |
-| 1. API | Pessoa 1 | ✅ pronto |
-| 2. Front-end | Pessoa 2 | ✅ pronto |
-| 3. Postgres e Docker | Pessoa 3 | ⏳ próxima |
-| 4. CI (GitHub Actions) | Pessoa 4 | ⏳ |
-| 5. Terraform e CD | Pessoa 5 | ⏳ |
